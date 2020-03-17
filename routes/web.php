@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','WebsiteControllerController@index');
 Route::get('/home','WebsiteControllerController@index');
+Route::get('/{catID}/show','WebsiteControllerController@show');
 
 Auth::routes();
 
 
 Route::get('/admin', 'HomeController@welcome');
-
 Route::get('admin/home', 'HomeController@index');
+Route::get('admin/{catID}/show', 'HomeController@show');
+Route::get('admin/{catID}/{postID}/show', 'HomeController@PostShow');
+Route::get('admin/{postID}/delete', 'HomeController@destory');
+
+
+

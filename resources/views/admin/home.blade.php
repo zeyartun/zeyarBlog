@@ -9,7 +9,7 @@
                     <div class="container">
                          <div class="links">
                             @foreach($categorys as $category)
-                            <a href="{{$category->catName}}">{{$category->catName}}</a>
+                            <a href="/admin/{{$category->id}}/show">{{$category->catName}}</a>
                             @endforeach
                         </div>
                     </div>
@@ -37,9 +37,9 @@
                                     <div class="card-header"><h2>{{$post->postTitle}}</h2></div>
                                     <div class="card-body">{{$post->postContent}}</div>
                                     <div class="card-footer">
-                                        <a href="#" class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
+                                        <a href="{{$category->id}}/{{$post->id}}/show" class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
                                         <a href="#" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/admin/{{$post->id}}/delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </div>
                             </div>

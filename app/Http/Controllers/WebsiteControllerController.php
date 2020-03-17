@@ -49,9 +49,13 @@ class WebsiteControllerController extends Controller
      * @param  \App\websiteController  $websiteController
      * @return \Illuminate\Http\Response
      */
-    public function show(websiteController $websiteController)
+    public function show($websiteController)
     {
-        //
+        $categorys = postCategory::all();
+        $categoryView = post::where('cat_ID',$websiteController)->get();
+        return view('websiteView/catView')->with(['categoryView'=>$categoryView , 'categorys'=>$categorys]);
+
+
     }
 
     /**

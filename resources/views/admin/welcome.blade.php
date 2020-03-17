@@ -38,7 +38,7 @@
                 </div>
                 <div class="links">
                     @foreach($categorys as $category)
-                        <a href="{{$category->catName}}">{{$category->catName}}</a>
+                        <a href="/admin/{{$category->id}}/show">{{$category->catName}}</a>
                     @endforeach
                 </div>
             </div>
