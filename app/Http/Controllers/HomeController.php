@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\post;
 class HomeController extends Controller
 {
     /**
@@ -23,11 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = post::paginate(12);
+        return view('admin/home',compact('posts'));
     }
 
     public function welcome()
     {
-        return view('welcome');
+        return view('admin/welcome');
     }
 }

@@ -34,9 +34,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome To Admin
+                   
                 </div>
-               @include('nav')
+               @include('admin/nav')
             </div>
         </div>
     </body>

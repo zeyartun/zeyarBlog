@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = post::pagenate();
+        return view('websiteView.home', compact('posts'));
     }
 
     /**

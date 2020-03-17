@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\websiteController;
 use Illuminate\Http\Request;
+use App\post;
 
 class WebsiteControllerController extends Controller
 {
@@ -14,7 +15,8 @@ class WebsiteControllerController extends Controller
      */
     public function index()
     {
-        //
+        $posts = post::paginate(12);
+        return view('admin/home',compact('posts'));
     }
 
     /**
