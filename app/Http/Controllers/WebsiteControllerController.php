@@ -16,7 +16,7 @@ class WebsiteControllerController extends Controller
     public function index()
     {
         $posts = post::paginate(12);
-        return view('admin/home',compact('posts'));
+        return view('websiteView/webhome',compact('posts'));
     }
 
     /**

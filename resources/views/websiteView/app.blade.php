@@ -11,6 +11,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/cuStyle.css') }}" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 @yield('content')
