@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\post;
 use Illuminate\Http\Request;
+use App\postCategory;
 
 class PostController extends Controller
 {
@@ -14,8 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = post::pagenate();
-        return view('websiteView.home', compact('posts'));
+
     }
 
     /**

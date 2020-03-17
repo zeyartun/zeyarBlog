@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\websiteController;
 use Illuminate\Http\Request;
 use App\post;
+use App\postCategory;
+
 
 class WebsiteControllerController extends Controller
 {
@@ -16,7 +18,8 @@ class WebsiteControllerController extends Controller
     public function index()
     {
         $posts = post::paginate(12);
-        return view('websiteView/webhome',compact('posts'));
+        $categorys = postCategory::all();
+        return view('websiteView/webhome')->with(['categorys'=>$categorys ,'posts'=>$posts]);
     }
 
     /**

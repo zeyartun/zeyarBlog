@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
 
        for ($i=0; $i < 50; $i++) { 
        		$post = new post();
-       		$post->cat_ID = rand(1, 20);
+       		$post->cat_ID = rand(1, 10);
           $post->postTitle = $faker->text('10');
           $post->postContent = $faker->text('200');
           $post->user_ID = rand(1, 4);

@@ -6,18 +6,11 @@
         <div class="col-md-12">
             <div class="content">
                 <!-- <div class="flex-center position-ref full-height"> -->
-                    <div class="">
+                    <div class="container">
                          <div class="links">
-                            <a href="{{ url('admin/home') }}">Home</a>
-                            <a href="{{ url('admin/about') }}">About</a>
-                            <a href="{{ url('admin/html') }}">Html</a>
-                            <a href="{{ url('admin/css') }}">Css</a>
-                            <a href="{{ url('admin/js') }}">Javascript</a>
-                            <a href="{{ url('admin/jquery') }}">JQuery</a>
-                            <a href="{{ url('admin/php') }}">PHP</a>
-                            <a href="{{ url('admin/sql') }}">SQL</a>
-                            <a href="{{ url('admin/c#') }}">C#</a>
-                            <a href="{{ url('admin/ps') }}">Photoshop</a>
+                            @foreach($categorys as $category)
+                            <a href="{{$category->catName}}">{{$category->catName}}</a>
+                            @endforeach
                         </div>
                     </div>
                 <!-- </div> -->
@@ -47,7 +40,6 @@
                                         <a href="#" class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
                                         <a href="#" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                         <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-
                                     </div>
                                 </div>
                             </div>

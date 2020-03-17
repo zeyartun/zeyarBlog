@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\post;
+use App\postCategory;
 class HomeController extends Controller
 {
     /**
@@ -24,11 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         $posts = post::paginate(12);
-        return view('admin/home',compact('posts'));
+        $categorys = postCategory::all();
+        return view('admin/home')->with(['posts'=>$posts, 'categorys'=> $categorys]);
     }
 
     public function welcome()
     {
-        return view('admin/welcome');
+        $categorys = postCategory::all();
+        return view('admin/welcome')->with(['categorys'=> $categorys]);
     }
 }

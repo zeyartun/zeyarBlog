@@ -21,7 +21,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('home') }}">Website Home</a>
+                        <a href="{{ url('admin/home') }}">Admin Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -37,16 +37,9 @@
                    
                 </div>
                 <div class="links">
-                    <a href="{{ url('admin/home') }}">Home</a>
-                    <a href="{{ url('admin/about') }}">About</a>
-                    <a href="{{ url('admin/html') }}">Html</a>
-                    <a href="{{ url('admin/css') }}">Css</a>
-                    <a href="{{ url('admin/js') }}">Javascript</a>
-                    <a href="{{ url('admin/jquery') }}">JQuery</a>
-                    <a href="{{ url('admin/php') }}">PHP</a>
-                    <a href="{{ url('admin/sql') }}">SQL</a>
-                    <a href="{{ url('admin/c#') }}">C#</a>
-                    <a href="{{ url('admin/ps') }}">Photoshop</a>
+                    @foreach($categorys as $category)
+                        <a href="{{$category->catName}}">{{$category->catName}}</a>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -8,16 +8,9 @@
             <div class="content">
                     <div class="m-3">
                          <div class="links">
-                            <a href="{{ url('/home') }}">Home</a>
-                            <a href="{{ url('/about') }}">About</a>
-                            <a href="{{ url('/html') }}">Html</a>
-                            <a href="{{ url('/css') }}">Css</a>
-                            <a href="{{ url('/js') }}">Javascript</a>
-                            <a href="{{ url('/jquery') }}">JQuery</a>
-                            <a href="{{ url('/php') }}">PHP</a>
-                            <a href="{{ url('/sql') }}">SQL</a>
-                            <a href="{{ url('/c#') }}">C#</a>
-                            <a href="{{ url('/ps') }}">Photoshop</a>
+                            @foreach($categorys as $category)
+                            <a href="{{$category->catName}}">{{$category->catName}}</a>
+                            @endforeach
                         </div>
                     </div>
                 <!-- </div> -->
