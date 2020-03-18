@@ -32,7 +32,7 @@ Route::post('admin/post/new/','HomeController@PostNew');
 Route::post('admin/post/{postID}/edit','HomeController@PostEdit');
 Route::post('admin/category/Create/','HomeController@categoryAdd');
 Route::get('admin/category/{catID}/delete/','HomeController@categoryDelete');
-Route::get('admin/category/{catID}/edit/','HomeController@categoryEdit');
+Route::post('admin/category/edit/','HomeController@categoryEdit');
 
 
 

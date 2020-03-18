@@ -125,8 +125,9 @@ class HomeController extends Controller
         return redirect('admin/category/categoryEdit')->with('success', 'A Category Delete successfully.');
     }
 
-    public function categoryEdit(Request $request, $catID)
+    public function categoryEdit(Request $request)
     {
+        $catID = $request->input('category');
         $cat = postCategory::find($catID);
         $cat->catName = $request->Edit_Category;
         $cat->user_ID = auth()->id();

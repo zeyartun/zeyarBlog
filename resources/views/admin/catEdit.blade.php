@@ -32,7 +32,7 @@
                         @include('/admin/danger')
                         <div class="col-md-12">
                             <div class="card card-body">
-                                <form action="{{ url('admin/category/{catID}/edit/') }}" method="get">
+                                <form action="{{ url('admin/category/edit/') }}" method="post">
                                     @csrf 
                                     <div class="row">
                                         <div class="form-group col-md-6">
