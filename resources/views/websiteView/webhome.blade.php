@@ -23,9 +23,9 @@
                             <div class="col-md-4 p-2">
                                 <div class="card">
                                     <div class="card-header"><h2>{{$post->postTitle}}</h2></div>
-                                    <div class="card-body">{{$post->postContent}}</div>
+                                    <div class="card-body">{{Str::limit($post->postContent, 200)}}</div>
                                     <div class="card-footer">
-                                        <a href="/admin/{{$category->id}}/{{$post->id}}/show">Read More</a>
+                                        <a href="/{{$post->id}}/PostShow">Read More</a>
                                     </div>
                                 </div>
                             </div>

@@ -35,11 +35,11 @@ class HomeController extends Controller
         return view('admin/welcome')->with(['categorys'=> $categorys]);
     }
 
-    public function PostShow($catID,$postID)
+    public function PostShow($postID)
     {
-        $posts = post::find($catID)->where('id',$postID)->get();
+        $posts = post::where('id',$postID)->get();
         $categorys = postCategory::all();
-        return view('websiteView.postView')->with(['posts'=>$posts, 'categorys'=> $categorys]);
+        return view('admin/postView')->with(['posts'=>$posts, 'categorys'=> $categorys]);
     }
 
      public function show($catID)
@@ -47,15 +47,32 @@ class HomeController extends Controller
         $categorys = postCategory::all();
         $categoryView = post::where('cat_ID',$catID)->get();
         return view('admin/catView')->with(['categoryView'=>$categoryView , 'categorys'=>$categorys]);
-
-
     }
 
     public function destory($postID)
     {
         $posts = post::find($postID);
         $posts->delete();
-        return redirect('admin')->with('success', 'A post deleted successfully.');
+        return redirect('admin/home')->with('success', 'A post deleted successfully.');
+    }
+
+    public function newPost()
+    {
+        $categorys = postCategory::all();
+        return view('admin/postNew')->with(['categorys'=>$categorys]);
+    }
+
+    public function editPost($postID)
+    {
+        $categorys = postCategory::all();
+        $posts = post::find($postID);
+        return view('admin/postEdit')->with(['posts'=>$posts , 'categorys'=>$categorys]);
+    }
+
+    public function editCategory()
+    {
+        $categorys = postCategory::all();
+        return view('admin/catEdit')->with(['categorys'=>$categorys]);
     }
 
 

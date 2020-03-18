@@ -15,15 +15,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','WebsiteControllerController@index');
 Route::get('/home','WebsiteControllerController@index');
 Route::get('/{catID}/show','WebsiteControllerController@show');
+Route::get('/{postID}/PostShow', 'WebsiteControllerController@PostShow');
 
 Auth::routes();
-
 
 Route::get('/admin', 'HomeController@welcome');
 Route::get('admin/home', 'HomeController@index');
 Route::get('admin/{catID}/show', 'HomeController@show');
-Route::get('admin/{catID}/{postID}/show', 'HomeController@PostShow');
+Route::get('admin/{postID}/PostShow', 'HomeController@PostShow');
 Route::get('admin/{postID}/delete', 'HomeController@destory');
+Route::get('/admin/{postID}/edit','HomeController@editPost');
+Route::get('/admin/category/categoryEdit','HomeController@editCategory');
 
+Route::get('/admin/post/new','HomeController@newPost');
+Route::post('/admin/NewPost/','HomeController@PostNew');
 
 

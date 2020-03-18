@@ -91,4 +91,11 @@ class WebsiteControllerController extends Controller
     {
         //
     }
+
+     public function PostShow($postID)
+    {
+        $posts = post::where('id',$postID)->get();
+        $categorys = postCategory::all();
+        return view('websiteView/postView')->with(['posts'=>$posts, 'categorys'=> $categorys]);
+    }
 }
