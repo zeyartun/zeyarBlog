@@ -96,7 +96,7 @@ class HomeController extends Controller
 
      public function PostEdit(Request $req, $postID)
     {
-        $posts = post::find($postID);
+        $posts = post::withTrashed()->find($postID);
         $posts->cat_ID = $req->input('category');
         $posts->postTitle = $req->title;
         $posts->postContent = $req->content;
