@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="content">
             	<div class="col-md-12 pb-3 text-right">
-            		<a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                     <a href="/admin/post/new" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i>New Post</a>
+            		<a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                 </div>
                 <div class="m-3">
                      <div class="links">
@@ -23,15 +23,15 @@
                         @include('/admin/danger');
                          <div class="col-md-12">
                             <div class="card card-body">
-                                <form action="{{ url('admin/$posts->id/edit/') }}" method="post">
+                                <form action="{{ url('admin/post/'.$posts->id.'/edit/') }}" method="post">
                                     @csrf 
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Category</label>
                                             <select name="category" class="form-control">
-                                                <option value="0" selected="">Plese Select Category</option>    
+                                                <option value="0" selected="" disabled="">Plese Select Category</option>    
                                                 @foreach($categorys as $category)
-                                                    <option value="{{$category->catName}}">{{$category->catName}}</option>
+                                                    <option value="{{$category->id}}">{{$category->catName}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

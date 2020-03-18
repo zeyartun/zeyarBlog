@@ -17,9 +17,10 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->integer('cat_ID');
             $table->string('postTitle');
-            $table->string('postContent');
+            $table->longText('postContent');
             $table->integer('user_ID');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -13,7 +13,7 @@ class categorySeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-       for ($i=0; $i < 10; $i++) { 
+       for ($i=0; $i < 9; $i++) { 
        		$post = new postCategory();
             $post->catName = $faker->text('10');
             $post->user_ID = rand(1, 3);

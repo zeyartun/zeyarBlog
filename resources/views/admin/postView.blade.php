@@ -6,8 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="col-md-12 pb-3 text-right">
-                <a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                 <a href="/admin/post/new" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i>New Post</a>
+                <a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
             </div>
             <div class="content">
                 <div class="m-3">

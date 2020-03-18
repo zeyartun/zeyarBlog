@@ -16,10 +16,10 @@
                             @endif
                         </div>
                         <div class="col-md-12 pb-3 text-right">
-                            <a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                             <a href="/admin/post/new" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i>New Post</a>
+                            <a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                         </div>
-                         <div class="links">
+                         <div class="links m-3">
                             @foreach($categorys as $category)
                             <a href="/admin/{{$category->id}}/show">{{$category->catName}}</a>
                             @endforeach
@@ -39,8 +39,6 @@
                     @endif 
                 </div>
                 <div class="content">
-                    <h1>Welcome To Home Page</h1>
-
                     <div class="container">
                         <div class="row">
                             @foreach($posts as $post)
@@ -51,7 +49,11 @@
                                     <div class="card-footer">
                                         <a href="/admin/{{$post->id}}/PostShow" class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
                                         <a href="/admin/{{$post->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                        @if($post->deleted_at == FALSE)
                                         <a href="/admin/{{$post->id}}/delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        @else
+                                        <a href="/admin/{{$post->id}}/Restore" class="btn btn-dark">Restore</a>
+                                         @endif
                                     </div>
                                 </div>
                             </div>

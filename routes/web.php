@@ -24,10 +24,16 @@ Route::get('admin/home', 'HomeController@index');
 Route::get('admin/{catID}/show', 'HomeController@show');
 Route::get('admin/{postID}/PostShow', 'HomeController@PostShow');
 Route::get('admin/{postID}/delete', 'HomeController@destory');
+Route::get('admin/{postID}/Restore', 'HomeController@Restore');
 Route::get('/admin/{postID}/edit','HomeController@editPost');
 Route::get('/admin/category/categoryEdit','HomeController@editCategory');
-
 Route::get('/admin/post/new','HomeController@newPost');
-Route::post('/admin/NewPost/','HomeController@PostNew');
+Route::post('admin/post/new/','HomeController@PostNew');
+Route::post('admin/post/{postID}/edit','HomeController@PostEdit');
+Route::post('admin/category/Create/','HomeController@categoryAdd');
+Route::get('admin/category/{catID}/delete/','HomeController@categoryDelete');
+Route::get('admin/category/{catID}/edit/','HomeController@categoryEdit');
+
+
 
 

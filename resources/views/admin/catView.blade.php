@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="content">
                 <div class="col-md-12 pb-3 text-right">
-                    <a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                     <a href="/admin/post/new" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i>New Post</a>
+                    <a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                 </div>
                 <div class="m-3">
                      <div class="links">
@@ -29,7 +29,11 @@
                                     <div class="card-footer">
                                         <a href="/admin/{{$postsView->id}}/PostShow" class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
                                         <a href="/admin/{{$postsView->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                        @if($postsView->deleted_at == FALSE)
                                         <a href="/admin/{{$postsView->id}}/delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        @else
+                                        <a href="/admin/{{$postsView->id}}/Restore" class="btn btn-dark">Restore</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

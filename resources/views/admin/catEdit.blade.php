@@ -7,8 +7,16 @@
         <div class="col-md-12">
             <div class="content">
             	<div class="col-md-12 pb-3 text-right">
-            		<a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
                     <a href="/admin/post/new" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i>New Post</a>
+            		<a href="/admin/category/categoryEdit" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i>New Category</a>
+                </div>
+                <div class="col-md-12">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong>Success!</strong> {{session('success')}}
+                        </div>
+                    @endif
                 </div>
                 <div class="m-3">
                      <div class="links">
@@ -23,21 +31,21 @@
                         @include('/admin/danger')
                         <div class="col-md-12">
                             <div class="card card-body">
-                                <form action="{{ url('admin/category/edit/') }}" method="post">
+                                <form action="{{ url('admin/category/{catID}/edit/') }}" method="get">
                                     @csrf 
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label>Category</label>
                                             <select name="category" class="form-control">
-                                                <option value="0" selected="">Plese Select Category</option>    
+                                                <option value="0" selected="" disabled>Plese Select Category</option>    
                                                 @foreach($categorys as $category)
-                                                    <option value="{{$category->catName}}">{{$category->catName}}</option>
+                                                    <option value="{{$category->id}}">{{$category->catName}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>New Category Name</label>
-                                            <input type="text" name="New_Category" class="form-control">
+                                            <label>Edit Category Name</label>
+                                            <input type="text" name="Edit_Category" class="form-control">
                                         </div>
                                     </div>
                                 	<div class="col-md-12">
@@ -49,15 +57,15 @@
                         <hr class="w-100">
                         <div class="col-md-6">
                             <div class="card card-body">
-                                <form action="{{ url('admin/category/delete/') }}" method="post">
+                                <form action="{{ url('admin/category/{catID}/delete/') }}" method="get">
                                     @csrf 
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label>Category</label>
                                             <select name="category" class="form-control">
-                                                <option value="0" selected="">Plese Select Category</option>    
+                                                <option value="0" selected="" disabled>Plese Select Category</option>    
                                                 @foreach($categorys as $category)
-                                                    <option value="{{$category->catName}}">{{$category->catName}}</option>
+                                                    <option value="{{$category->id}}">{{$category->catName}}</option>
                                                 @endforeach
                                             </select>
                                         </div>                                        

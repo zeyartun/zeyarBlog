@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = post::paginate(12);
+        $posts = post::withTrashed()->paginate(12);
         $categorys = postCategory::all();
         return view('admin/home')->with(['posts'=>$posts, 'categorys'=> $categorys]);
     }
@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     public function PostShow($postID)
     {
-        $posts = post::where('id',$postID)->get();
+        $posts = post::withTrashed()->where('id',$postID)->get();
         $categorys = postCategory::all();
         return view('admin/postView')->with(['posts'=>$posts, 'categorys'=> $categorys]);
     }
@@ -45,7 +45,7 @@ class HomeController extends Controller
      public function show($catID)
     {
         $categorys = postCategory::all();
-        $categoryView = post::where('cat_ID',$catID)->get();
+        $categoryView = post::withTrashed()->where('cat_ID',$catID)->get();
         return view('admin/catView')->with(['categoryView'=>$categoryView , 'categorys'=>$categorys]);
     }
 
@@ -65,7 +65,7 @@ class HomeController extends Controller
     public function editPost($postID)
     {
         $categorys = postCategory::all();
-        $posts = post::find($postID);
+        $posts = post::withTrashed()->find($postID);
         return view('admin/postEdit')->with(['posts'=>$posts , 'categorys'=>$categorys]);
     }
 
@@ -73,6 +73,65 @@ class HomeController extends Controller
     {
         $categorys = postCategory::all();
         return view('admin/catEdit')->with(['categorys'=>$categorys]);
+    }
+
+    public function Restore($postID)
+    {
+        $posts = post::withTrashed()->where('id', $postID)->restore();
+        return redirect('admin/home')->with('success', 'A post restore successfully.');
+    }
+
+    public function PostNew(Request $req)
+    {
+        $posts = new post();
+
+        $posts->cat_ID = $req->input('category');
+        $posts->postTitle = $req->title;
+        $posts->postContent = $req->content;
+        $posts->user_ID = auth()->id();
+
+        $posts->save();
+        return redirect('admin/home')->with('success', 'A post created successfully.');
+    }
+
+     public function PostEdit(Request $req, $postID)
+    {
+        $posts = post::find($postID);
+        $posts->cat_ID = $req->input('category');
+        $posts->postTitle = $req->title;
+        $posts->postContent = $req->content;
+        $posts->user_ID = auth()->id();
+
+        $posts->save();
+        return redirect('admin/home')->with('success', 'A post Update successfully.');
+    }
+
+    public function categoryAdd(Request $request)
+    {
+        $cat = new postCategory();
+
+        $cat->catName = $request->New_Category;
+        $cat->user_ID = auth()->id();
+
+        $cat->save();
+        return redirect('admin/category/categoryEdit')->with('success', 'A Category Add successfully.');
+    }
+
+    public function categoryDelete(Request $request)
+    {
+        $catID = $request->input('category');
+        $cat = postCategory::find($catID);
+        $cat->delete();
+        return redirect('admin/category/categoryEdit')->with('success', 'A Category Delete successfully.');
+    }
+
+    public function categoryEdit(Request $request, $catID)
+    {
+        $cat = postCategory::find($catID);
+        $cat->catName = $request->Edit_Category;
+        $cat->user_ID = auth()->id();
+        $cat->save();
+        return redirect('admin/category/categoryEdit')->with('success', 'A Category Update successfully.');
     }
 
 
