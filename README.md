@@ -18,6 +18,7 @@ Rum => composer update
 Rum => php artisan key:generate
 
 create Database
+change .env.example file to .env
 change database name in .env file 
 
 Rum => php artisan migrate --seed
