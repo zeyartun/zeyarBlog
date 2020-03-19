@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\post;
 use App\postCategory;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -133,6 +134,22 @@ class HomeController extends Controller
         $cat->user_ID = auth()->id();
         $cat->save();
         return redirect('admin/category/categoryEdit')->with('success', 'A Category Update successfully.');
+    }
+
+    public function UserNew()
+    {
+        $categorys = postCategory::all(); 
+        return view('admin/user')->with(['categorys'=>$categorys]);
+    }
+
+    public function RegisterUser(Request $request)
+    {
+        $categorys = postCategory::all(); 
+        $user = new User();
+        $user->name = $request->name;
+        $user->email =  $request->email;
+        $user->password = $request->password;
+        return view('admin/user')->with(['categorys'=>$categorys]);
     }
 
 

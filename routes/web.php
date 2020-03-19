@@ -28,11 +28,14 @@ Route::get('admin/{postID}/Restore', 'HomeController@Restore');
 Route::get('/admin/{postID}/edit','HomeController@editPost');
 Route::get('/admin/category/categoryEdit','HomeController@editCategory');
 Route::get('/admin/post/new','HomeController@newPost');
+Route::get('admin/category/{catID}/delete/','HomeController@categoryDelete');
 Route::post('admin/post/new/','HomeController@PostNew');
 Route::post('admin/post/{postID}/edit','HomeController@PostEdit');
 Route::post('admin/category/Create/','HomeController@categoryAdd');
-Route::get('admin/category/{catID}/delete/','HomeController@categoryDelete');
 Route::post('admin/category/edit/','HomeController@categoryEdit');
+
+Route::get('admin/user/new/','HomeController@UserNew');
+Route::post('admin/user/Register/','HomeController@RegisterUser');
 
 
 
