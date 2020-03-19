@@ -21,6 +21,7 @@ create Database
 change database name in .env file 
 
 Rum => php artisan migrate --seed
+Rum => php artisan serve
 
 website view => localhost:8000/
 login to admin => localhost:8000/admin
