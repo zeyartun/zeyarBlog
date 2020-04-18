@@ -28,7 +28,11 @@
                                             <select name="category" class="form-control">
                                                 <option value="0" selected="" disabled="">Plese Select Category</option>    
                                                 @foreach($categorys as $category)
-                                                    <option value="{{$category->id}}">{{$category->catName}}</option>
+                                                    <option value="{{$category->id}}" 
+                                                        @if($posts->cat_ID == $category->id)
+                                                            selected="selected" 
+                                                        @endif
+                                                        >{{$category->catName}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
