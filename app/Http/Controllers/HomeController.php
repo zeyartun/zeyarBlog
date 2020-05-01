@@ -90,9 +90,9 @@ class HomeController extends Controller
         $posts->postTitle = $req->title;
         $posts->postContent = $req->content;
         $posts->user_ID = auth()->id();
-
-        $posts->save();
-        return redirect('admin/home')->with('success', 'A post created successfully.');
+        return dd($req->images);
+        // $posts->save();
+        // return redirect('admin/home')->with('success', 'A post created successfully.');
     }
 
      public function PostEdit(Request $req, $postID)
