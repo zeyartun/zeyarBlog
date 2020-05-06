@@ -22,6 +22,13 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header"><h1>{{$post->postTitle}}</h1></div>
+                                    @php
+                                        $images = $post->images;
+                                        $deimage = decrypt($images);
+                                    @endphp
+                                    @foreach ($deimage as $image)
+                                        <img src="{{asset('/public/image/'.$image)}}" alt="">
+                                    @endforeach
                                     <div class="card-body">{{$post->postContent}}</div>
                                 </div>
                             </div>

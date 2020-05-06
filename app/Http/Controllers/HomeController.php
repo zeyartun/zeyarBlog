@@ -85,14 +85,27 @@ class HomeController extends Controller
     public function PostNew(Request $req)
     {
         $posts = new post();
+            $DBimages=[];
+            if($req->hasFile('images')){
+                foreach($req->file('images') as $image){
+                    $image_name = time()."_". $image->getClientOriginalName();
+                    $image->move(public_path('image'),$image_name);
+
+                    array_push($DBimages,$image_name);
+                }
+            }
+                
+                // return back();
+                
 
         $posts->cat_ID = $req->input('category');
         $posts->postTitle = $req->title;
         $posts->postContent = $req->content;
+        $posts->images = encrypt($DBimages);
         $posts->user_ID = auth()->id();
-        return dd($req->images);
-        // $posts->save();
-        // return redirect('admin/home')->with('success', 'A post created successfully.');
+        
+        $posts->save();
+        return redirect('admin/home')->with('success', 'A post created successfully.');
     }
 
      public function PostEdit(Request $req, $postID)
