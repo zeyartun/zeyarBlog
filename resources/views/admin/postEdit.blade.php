@@ -20,10 +20,10 @@
                         @include('/admin/danger');
                          <div class="col-md-12">
                             <div class="card card-body">
-                                <form action="{{ url('admin/post/'.$posts->id.'/edit/') }}" method="post">
+                                <form action="{{ url('admin/post/'.$posts->id.'/edit/') }}" method="post" enctype="multipart/form-data">
                                     @csrf 
                                     <div class="row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label>Category</label>
                                             <select name="category" class="form-control">
                                                 <option value="0" selected="" disabled="">Plese Select Category</option>    
@@ -36,9 +36,13 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-4">
                                             <label>Post Title</label>
                                             <input type="text" name="title" class="form-control" value="{{$posts->postTitle}}">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Images</label>
+                                            <input type="file" multiple name="images[]">
                                         </div>
                                     </div>
                                    

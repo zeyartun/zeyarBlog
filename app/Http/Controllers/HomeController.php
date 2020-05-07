@@ -111,12 +111,31 @@ class HomeController extends Controller
      public function PostEdit(Request $req, $postID)
     {
         $posts = post::withTrashed()->find($postID);
+        $DBimgs = [];
+        if($req->hasFile('images')){
+
+            $old_images = $posts->images;
+            if($old_images != null){
+                $de_old_image = decrypt($old_images);
+                foreach($de_old_image as $old_imgs){
+                    unlink(public_path('image/'.$old_imgs));
+                }
+            }               
+
+            foreach($req->file('images') as $image){
+                $image_name =time().'_'.$image->getClientOriginalName();
+                $image->move(public_path('image'),$image_name);
+                array_push($DBimgs,$image_name);
+            }
+            $posts->images = encrypt($DBimgs);
+        }
+
         $posts->cat_ID = $req->input('category');
         $posts->postTitle = $req->title;
-        $posts->postContent = $req->content;
+        $posts->postContent = $req->content;        
         $posts->user_ID = auth()->id();
 
-        $posts->save();
+        $posts->update();
         return redirect('admin/home')->with('success', 'A post Update successfully.');
     }
 

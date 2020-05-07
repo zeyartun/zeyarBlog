@@ -24,10 +24,14 @@
                                     <div class="card-header"><h1>{{$post->postTitle}}</h1></div>
                                     @php
                                         $images = $post->images;
-                                        $deimage = decrypt($images);
+                                        if ($images != null) {
+                                            $deimage = decrypt($images);
+                                        }else{
+                                            $deimage = [];
+                                        }
                                     @endphp
                                     @foreach ($deimage as $image)
-                                        <img src="{{asset('/public/image/'.$image)}}" alt="">
+                                        <img class="w-100" src="{{URL::asset('/image/'.$image)}}" alt="">
                                     @endforeach
                                     <div class="card-body">{{$post->postContent}}</div>
                                 </div>
