@@ -22,7 +22,16 @@
                             <div class="col-md-4 p-2">
                                 <div class="card">
                                     <div class="card-header"><h2>{{$postsView->postTitle}}</h2></div>
-                                    <div class="card-body">{{Str::limit($postsView->postContent, 200)}}</div>
+                                    @php
+                                        $images = $postsView->images;
+                                        $image = '';
+                                        if($images != null){
+                                            $de_image = decrypt($images);        
+                                            $image = $de_image[0];
+                                        }
+                                        
+                                    @endphp
+                                    <div class="card-body"><img class="w-100" src="{{URL::asset('/image/'.$image)}}" alt=""></div>
                                     <div class="card-footer">
                                         <a href="/admin/{{$postsView->id}}/PostShow" class="btn btn-info"><i class="fas fa-eye text-white"></i></a>
                                         <a href="/admin/{{$postsView->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>

@@ -84,6 +84,9 @@ class HomeController extends Controller
 
     public function PostNew(Request $req)
     {
+        $req->validate([
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
         $posts = new post();
             $DBimages=[];
             if($req->hasFile('images')){
@@ -110,6 +113,9 @@ class HomeController extends Controller
 
      public function PostEdit(Request $req, $postID)
     {
+        $req->validate([
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
         $posts = post::withTrashed()->find($postID);
         $DBimgs = [];
         if($req->hasFile('images')){
@@ -123,6 +129,7 @@ class HomeController extends Controller
             }               
 
             foreach($req->file('images') as $image){
+                
                 $image_name =time().'_'.$image->getClientOriginalName();
                 $image->move(public_path('image'),$image_name);
                 array_push($DBimgs,$image_name);

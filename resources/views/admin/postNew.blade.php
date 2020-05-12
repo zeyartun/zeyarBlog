@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Images</label>
-                                            <input type="file" name="images[]" multiple class="form-control">
+                                            <input type="file" name="images[]" multiple >
                                         </div>
                                     </div>
                                    

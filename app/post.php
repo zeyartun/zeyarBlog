@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class post extends Model
 {
 	use SoftDeletes;
+
 }
